@@ -1,0 +1,70 @@
+name: Test, Build, and Push
+
+on:
+  push
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Set up Docker Compose
+        uses: KengoTODA/actions-setup-docker-compose@v1.0.9
+        with:
+          version: '2.20.2'
+
+      - name: Render hello-world to image
+        run: |
+          cp .env.sample .env
+          docker compose run -e TAP_PIXLET_MAGNIFICATION=8 pixbyt run hello-world--webp
+          sudo mv output/**/*.webp output/hello-world.webp
+
+      - name: Store image
+        uses: actions/upload-artifact@v3
+        with:
+          name: image
+          path: output/hello-world.webp
+
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2.2.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4.6.0
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      # TODO: Reuse image built above
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4.1.1
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
