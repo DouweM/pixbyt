@@ -1,0 +1,11 @@
+version: 1
+project_id: 87a2eed4-5503-47f7-a76b-f8396538d763
+send_anonymous_usage_stats: false
+default_environment: dev
+environments:
+- name: dev
+
+include_paths:
+- "./plugins/*.meltano.yml"
+- "./apps/**/pixbyt.yml"
+- "./apps.yml"

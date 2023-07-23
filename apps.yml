@@ -1,0 +1,4 @@
+schedules:
+- name: hello-world
+  interval: '0 * * * *' # On the hour
+  job: hello-world

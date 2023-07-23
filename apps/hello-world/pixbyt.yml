@@ -1,0 +1,17 @@
+jobs:
+- name: hello-world
+  tasks:
+  - tap-pixlet--hello-world target-tidbyt
+- name: hello-world--webp
+  tasks:
+  - tap-pixlet--hello-world target-webp
+
+plugins:
+  extractors:
+  - name: tap-pixlet--hello-world
+    inherit_from: tap-pixlet
+    pip_url: git+https://github.com/DouweM/tap-pixlet.git -r apps/hello-world/requirements.txt
+    config:
+      path: apps/hello-world
+      app_config:
+        name: $HELLO_WORLD_NAME

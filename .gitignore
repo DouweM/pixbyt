@@ -1,0 +1,5 @@
+/.meltano/
+/output/
+/logs/
+/.env
+/.python-version
