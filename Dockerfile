@@ -21,17 +21,19 @@ RUN mv pixlet /usr/local/bin/pixlet
 
 # Install base Meltano plugins
 COPY ./meltano.yml .
-COPY ./plugins/ ./plugins/
+COPY ./plugins/utilities/ ./plugins/utilities/
+COPY ./plugins/plugins.meltano.yml ./plugins/plugins.meltano.yml
 RUN meltano install
 
+# Copy apps
 COPY ./apps/ ./apps/
 
-# Install apt packages
+# Install apt packages for apps
 RUN cat ./apps/**/apt-packages.txt | sort | uniq > ./apps/apt-packages.txt
 RUN xargs -a apps/apt-packages.txt apt-get install -y
 
-# Install Meltano plugins
-RUN meltano install
+# Install Meltano plugins for apps
+RUN meltano install extractors
 
 # Copy remaining project files
 COPY . .

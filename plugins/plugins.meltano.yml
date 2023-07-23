@@ -38,6 +38,9 @@ plugins:
       core:
         dags_folder: $MELTANO_PROJECT_ROOT/plugins/airflow/dags
         plugins_folder: $MELTANO_PROJECT_ROOT/plugins/airflow/plugins
+      logging:
+        base_log_folder: $MELTANO_PROJECT_ROOT/logs
+        dag_processor_manager_log_location: $MELTANO_PROJECT_ROOT/logs/schedule_manager.log
       extension:
         airflow_home: $MELTANO_PROJECT_ROOT/plugins/airflow
         airflow_config: $MELTANO_PROJECT_ROOT/plugins/airflow/airflow.cfg

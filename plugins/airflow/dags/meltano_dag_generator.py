@@ -118,7 +118,7 @@ def _meltano_job_generator(schedules):
             )
             continue
 
-        base_id = f"meltano_{schedule['name']}_{schedule['job']['name']}"
+        base_id = schedule['name']
         common_tags = DEFAULT_TAGS.copy()
         common_tags.append(f"schedule:{schedule['name']}")
         common_tags.append(f"job:{schedule['job']['name']}")

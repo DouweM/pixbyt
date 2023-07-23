@@ -1,16 +1,6 @@
-x-apps-env:
-  &apps-env
-
-  TZ: $TZ
-
-  # apps
-  # <APP>_<CONFIG>: $<APP>_<CONFIG>
-  HELLO_WORLD_NAME: $HELLO_WORLD_NAME
-
 x-local-image:
   &local-image
   image: pixbyt:dev
-  platform: linux/amd64
   build:
     context: .
     args:
@@ -19,26 +9,20 @@ x-local-image:
 x-remote-image:
   &remote-image
   image: ghcr.io/<username>/pixbyt:main # TODO: replace with your own image
-  platform: linux/amd64
 
 services:
   pixbyt:
     <<: *local-image
     # <<: *remote-image # TODO: use this instead of the line above to use a remote image
+    platform: linux/amd64
     container_name: pixbyt
     environment:
-      # meltano
       MELTANO_DATABASE_URI: postgresql://postgres:postgres@localhost:5433/meltano
       AIRFLOW_DATABASE_SQL_ALCHEMY_CONN: postgresql://postgres:postgres@localhost:5434/airflow
-
-      # target-tidbyt
-      TIDBYT_DEVICE_ID: $TIDBYT_DEVICE_ID
-      TIDBYT_TOKEN: $TIDBYT_TOKEN
-
-      <<: *apps-env
+    env_file: .env
     volumes:
-    # TODO: rotate logs
-    - ./logs:/project/.meltano/utilities/airflow/logs
+    - ./logs:/project/logs # TODO: rotate logs
+    - ./output:/project/output
     network_mode: host
     depends_on:
     - meltano-db
