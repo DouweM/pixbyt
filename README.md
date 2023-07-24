@@ -39,38 +39,54 @@ Pixbyt lets you realize your wildest Tidbyt dreams by making it easy to:
 <table>
   <tr>
     <td valign="top" align="center">
-      <img src="apps/hello-world/screenshot.webp" width="128"><br>
-      <a href="./apps/hello-world/">hello-world</a>
+      <a href="./apps/hello-world/">
+        <img src="apps/hello-world/screenshot.webp" width="160"><br>
+        hello-world
+      </a>
     </td>
     <td valign="top" align="center">
-      <img src="https://raw.githubusercontent.com/DouweM/tidbyt-common-misconceptions/main/screenshot.webp" width="128"><br>
-      <a href="https://github.com/DouweM/tidbyt-common-misconceptions">common-misconceptions</a>
+      <a href="https://github.com/DouweM/tidbyt-common-misconceptions">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-common-misconceptions/main/screenshot.webp" width="160"><br>
+        common-misconceptions
+      </a>
     </td>
     <td valign="top" align="center">
-      <img src="https://raw.githubusercontent.com/DouweM/tidbyt-parcelapp/main/screenshot.webp" width="128"><br>
-      <a href="https://github.com/DouweM/tidbyt-parcelapp">parcelapp</a>
+      <a href="https://github.com/DouweM/tidbyt-parcelapp">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-parcelapp/main/screenshot.webp" width="160"><br>
+        parcelapp
+      </a>
     </td>
     <td valign="top" align="center">
-      <img src="https://raw.githubusercontent.com/DouweM/tidbyt-ffmpeg/main/screenshot.webp" width="128"><br>
-      <a href="https://github.com/DouweM/tidbyt-ffmpeg">ffmpeg</a>
+      <a href="https://github.com/DouweM/tidbyt-ffmpeg">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-ffmpeg/main/screenshot.webp" width="160"><br>
+        ffmpeg
+      </a>
     </td>
   </tr>
   <tr>
     <td valign="top" align="center">
-      <img src="https://raw.githubusercontent.com/DouweM/tidbyt-guess-the-flag/main/screenshot.webp" width="128"><br>
-      <a href="https://github.com/DouweM/tidbyt-guess-the-flag">guess-the-flag</a>
+      <a href="https://github.com/DouweM/tidbyt-guess-the-flag">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-guess-the-flag/main/screenshot.webp" width="160"><br>
+        guess-the-flag
+      </a>
     </td>
     <td valign="top" align="center">
-      <img src="https://raw.githubusercontent.com/DouweM/tidbyt-owen-wilson-facts/main/screenshot.webp" width="128"><br>
-      <a href="https://github.com/DouweM/tidbyt-owen-wilson-facts">owen-wilson-facts</a>
+      <a href="https://github.com/DouweM/tidbyt-owen-wilson-facts">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-owen-wilson-facts/main/screenshot.webp" width="160"><br>
+        owen-wilson-facts
+      </a>
     </td>
     <td valign="top" align="center">
-      <img src="https://raw.githubusercontent.com/DouweM/tidbyt-speedtest/main/screenshot.webp" width="128"><br>
-      <a href="https://github.com/DouweM/tidbyt-speedtest">speedtest</a>
+      <a href="https://github.com/DouweM/tidbyt-speedtest">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-speedtest/main/screenshot.webp" width="160"><br>
+        speedtest
+      </a>
     </td>
     <td valign="top" align="center">
-      <img src="https://raw.githubusercontent.com/DouweM/tidbyt-revolution/main/screenshot.webp" width="128"><br>
-      <a href="https://github.com/DouweM/tidbyt-revolution">revolution</a>
+      <a href="https://github.com/DouweM/tidbyt-revolution">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-revolution/main/screenshot.webp" width="160"><br>
+        revolution
+      </a>
     </td>
   </tr>
 </table>
