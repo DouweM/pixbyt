@@ -117,7 +117,10 @@ Pixbyt also includes resources to [package your apps into a Docker image](./Dock
 This repo defines a Pixbyt app server with a single [`hello-world` app](./apps/hello-world) that shows off some of its advanced features.
 It automatically builds a [`ghcr.io/douwem/pixbyt:main` Docker image](https://github.com/DouweM/pixbyt/pkgs/container/pixbyt) that can be [launched using Docker Compose](./docker-compose.yml) to render the app to a Tidbyt device every hour.
 
-You will use this repo as a template to build your own Pixbyt app server with the apps of your choice:
+If you want to very quickly see Pixbyt in action and already have Docker running, you can clone this repo, copy `.env.sample` to `.env`, and run `docker compose run -e TAP_PIXLET_MAGNIFICATION=8 pixbyt run hello-world--webp` to render the app to an image at `output/hello-world/<timestamp>.webp`.
+If you want to see the app on your Tidbyt, follow [step 2 below](#2-configure-your-tidbyt-and-the-hello-world-app) to configure it and then run `docker compose run -e TAP_PIXLET_BACKGROUND=false pixbyt run hello-world`.
+
+If you've got a little bit more time, or if you're ready to start using apps other than `hello-world`, follow the steps below to build your own Pixbyt app server using this repo as a template:
 
 ### 1. Create your own Pixbyt repo
 
@@ -126,7 +129,7 @@ You will use this repo as a template to build your own Pixbyt app server with th
 1. Clone your new repository and enter the new directory:
 
     ```bash
-    git clone git@github.com:<user>/pixbyt.git
+    git clone git@github.com:<username>/pixbyt.git
     cd pixbyt
     ```
 
@@ -193,7 +196,7 @@ Skip ahead to step 4 to build and launch the app server.
 
     ```bash
     cd apps
-    git submodule add https://github.com/<user>/<repo>.git <app>
+    git submodule add https://github.com/<username>/<repository>.git <app>
     ```
 
     For example, to install [`common-misconceptions`](https://github.com/DouweM/tidbyt-common-misconceptions):
