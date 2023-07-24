@@ -155,11 +155,23 @@ Out of the box, Pixbyt comes with a single [`hello-world` app](./apps/hello-worl
 
 #### 3.1. Add an app
 
+<details>
+<summary>
+
 ##### Option A: Use the example `hello-world` app
+
+</summary>
 
 Skip ahead to step 4 to build and launch the app server.
 
+</details>
+
+<details>
+<summary>
+
 ##### Option B: Install an existing app
+
+</summary>
 
 1. Add the app's repo as a submodule under `apps`, and enter the new directory:
 
@@ -179,7 +191,14 @@ Skip ahead to step 4 to build and launch the app server.
 
 2. Skip ahead to step 3.2 to configure the app.
 
+</details>
+
+<details>
+<summary>
+
 ##### Option C: Create a brand-new app
+
+</summary>
 
 1. Create a new directory for your app under `apps`, and enter the new directory:
 
@@ -229,6 +248,8 @@ Skip ahead to step 4 to build and launch the app server.
 
       1. Replace `<app>` with the name of your app
       1. Follow the `TODO` instructions.
+
+</details>
 
 #### 3.2. Configure the app
 
@@ -281,7 +302,12 @@ Skip ahead to step 4 to build and launch the app server.
 
 Note that you'll need to do this each time your apps, their schedules, or their configurations change.
 
+<details>
+<summary>
+
 #### Option A: Build locally
+
+</summary>
 
 1. Ensure [Docker](https://www.docker.com/) is installed.
 1. Build a Docker image containing Pixbyt and your apps:
@@ -290,7 +316,14 @@ Note that you'll need to do this each time your apps, their schedules, or their 
     docker compose build
     ```
 
+</details>
+
+<details>
+<summary>
+
 #### Option B: Build using GitHub Actions
+
+</summary>
 
 1. Edit `docker-compose.yml`:
    1. Under `x-remote-image:`, replace `<username>` with your GitHub username
@@ -310,6 +343,8 @@ Note that you'll need to do this each time your apps, their schedules, or their 
     ```
 
     This will automatically trigger a GitHub Actions workflow to build a Docker image containing Pixbyt and your apps.
+
+</details>
 
 ### 5. Launch the app server
 
