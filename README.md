@@ -39,9 +39,9 @@ Pixbyt lets you realize your wildest Tidbyt dreams by making it easy to:
 <table>
   <tr>
     <td valign="top" align="center">
-      <a href="./apps/hello-world/">
-        <img src="apps/hello-world/screenshot.webp" width="160"><br>
-        hello-world
+      <a href="https://github.com/DouweM/tidbyt-jeopardy">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-jeopardy/main/screenshot.webp" width="160"><br>
+        jeopardy
       </a>
     </td>
     <td valign="top" align="center">
