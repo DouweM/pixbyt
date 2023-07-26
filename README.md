@@ -6,7 +6,7 @@
 
 <span align="center">
 
-# You've never seen Tidbyt apps like this
+# Reimagine what your Tidbyt can do
 
 **Pixbyt is a self-hosted [Tidbyt](https://tidbyt.com) app server for advanced apps**<br>
 that aren't supported by the official [community app](https://tidbyt.dev/docs/publish/community-apps) server<br>
