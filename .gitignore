@@ -1,4 +1,4 @@
-/.meltano/
+/.meltano
 /output/
 /logs/
 /.env

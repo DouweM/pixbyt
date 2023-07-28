@@ -1,5 +1,7 @@
 ARG MELTANO_IMAGE=meltano/meltano:latest
-FROM $MELTANO_IMAGE
+ARG APP_ENV=prod
+
+FROM $MELTANO_IMAGE as base
 
 WORKDIR /project
 
@@ -23,7 +25,16 @@ RUN mv pixlet /usr/local/bin/pixlet
 COPY ./meltano.yml .
 COPY ./plugins/utilities/ ./plugins/utilities/
 COPY ./plugins/plugins.meltano.yml ./plugins/plugins.meltano.yml
-RUN meltano install
+
+# Prod: Install loaders and Airflow
+FROM base as prod-preinstall
+RUN meltano --log-level=debug install
+
+# Dev: Only install loaders, not Airflow
+FROM base as dev-preinstall
+RUN meltano --log-level=debug install loaders
+
+FROM ${APP_ENV}-preinstall as install
 
 # Copy apps
 COPY ./apps/ ./apps/
@@ -33,7 +44,7 @@ RUN cat ./apps/**/apt-packages.txt | sort | uniq > ./apps/apt-packages.txt
 RUN xargs -a apps/apt-packages.txt apt-get install -y
 
 # Install Meltano plugins for apps
-RUN meltano install extractors
+RUN meltano --log-level=debug install extractors
 
 # Copy remaining project files
 COPY . .
