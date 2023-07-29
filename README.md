@@ -6,11 +6,13 @@
 
 <span align="center">
 
-# You've never seen Tidbyt apps like this
+# Reimagine what your Tidbyt can do
 
 **Pixbyt is a self-hosted [Tidbyt](https://tidbyt.com) app server for advanced apps**<br>
 that aren't supported by the official [community app](https://tidbyt.dev/docs/publish/community-apps) server<br>
 that you can access through Tidbyt's mobile app.
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/DouweM/pixbyt)
 
 </span>
 
@@ -385,6 +387,26 @@ Instead, you can directly render a specific app to a WebP image file or your Tid
 
 ### Set up development environment
 
+#### Option A: GitHub Codespaces
+
+The quickest way to start developing is using GitHub Codespaces, which will automatically install the necessary dependencies and launch you into a web-based VS Code editor.
+
+If you've already created your own repo using this template repo:
+
+1. Click the "`<>` Code" button at the top of the page
+1. Choose "Codespaces" > "Create codespace on main"
+
+If you haven't created a new repo from this template yet:
+1. Click the green "Use this template" button at the top of this page
+1. Choose "Open in a codespace"
+
+<details>
+<summary>
+
+#### Option B: Develop locally
+
+</summary>
+
 1. Install [Pixlet](https://github.com/tidbyt/pixlet):
 
     - On macOS:
@@ -413,17 +435,17 @@ Instead, you can directly render a specific app to a WebP image file or your Tid
     meltano install
     ```
 
-    Note that if an app defines Python packages in its `requirements.txt`, you'll need to manually do a clean install of the app's Meltano plugin every time that file changes:
+</details>
+<details>
+<summary>
 
-    ```bash
-    meltano install --clean extractor tap-pixlet--<app>
-    ```
+#### Option C: Docker image
 
-    For example:
+</summary>
 
-    ```bash
-    meltano install --clean extractor tap-pixlet--hello-world
-    ```
+If you've already built a Docker image and want to test the apps inside it without making changes to them, you can use the `docker compose` commands below.
+
+</details>
 
 ### Render app to a WebP image file
 
@@ -435,6 +457,7 @@ The exact path is also printed in the command output.
 ```bash
 # Using local app definition:
 meltano run <app>--webp
+
 # Using app definition in Docker image:
 docker compose run pixbyt run <app>--webp
 ```
@@ -451,18 +474,18 @@ docker compose run pixbyt run hello-world--webp
 #### Magnified 8 times (512x256)
 
 ```bash
-# Using local app definition:
 TAP_PIXLET_MAGNIFICATION=8 meltano run <app>--webp
-# Using app definition in Docker image:
+
+# Using Docker image:
 docker compose run -e TAP_PIXLET_MAGNIFICATION=8 pixbyt run <app>--webp
 ```
 
 For example:
 
 ```bash
-# Using local app definition:
 TAP_PIXLET_MAGNIFICATION=8 meltano run hello-world--webp
-# Using app definition in Docker image:
+
+# Using Docker image:
 docker compose run -e TAP_PIXLET_MAGNIFICATION=8 pixbyt run hello-world--webp
 ```
 
@@ -474,18 +497,18 @@ The app will immediately show up on your Tidbyt.
 This is useful during development.
 
 ```bash
-# Using local app definition:
 TAP_PIXLET_BACKGROUND=false meltano run <app>
-# Using app definition in Docker image:
+
+# Using Docker image:
 docker compose run -e TAP_PIXLET_BACKGROUND=false pixbyt run <app>
 ```
 
 For example:
 
 ```bash
-# Using local app definition:
 TAP_PIXLET_BACKGROUND=false meltano run hello-world
-# Using app definition in Docker image:
+
+# Using Docker image:
 docker compose run -e TAP_PIXLET_BACKGROUND=false pixbyt run hello-world
 ```
 
@@ -495,17 +518,35 @@ The app will be added to the Tidbyt app rotation.
 This is useful when you're running this command on a schedule, to make sure that the app will be up to date the next time it comes up in the app rotation.
 
 ```bash
-# Using local app definition:
 meltano run <app>
-# Using app definition in Docker image:
+
+# Using Docker image:
 docker compose run pixbyt run <app>
 ```
 
 For example:
 
 ```bash
-# Using local app definition:
 meltano run hello-world
-# Using app definition in Docker image:
+
+# Using Docker image:
 docker compose run pixbyt run hello-world
 ```
+
+### Keep apps up to date
+
+Changes to an app's source files are automatically picked up, but changes to APT and Python package dependencies aren't.
+
+If an app defines Python packages in its `requirements.txt` file, you'll need to manually do a clean install of the app's Meltano plugin every time it changes:
+
+```bash
+meltano install --clean extractor tap-pixlet--<app>
+```
+
+For example:
+
+```bash
+meltano install --clean extractor tap-pixlet--hello-world
+```
+
+If an app defines APT packages in its `apt-packages.txt` file, you'll need to manually install them every time they change.
