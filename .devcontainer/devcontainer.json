@@ -2,7 +2,7 @@
   "name": "Pixbyt",
 
   "initializeCommand": "git submodule update --init",
-  "postCreateCommand": "ln -s /project/.meltano .",
+  "postCreateCommand": "ln -s /project/.meltano . && cp .env.sample .env",
 
   "build": {
     "context": "..",
@@ -17,7 +17,8 @@
     "codespaces": {
       "openFiles": [
         "README.md",
-        "apps.yml"
+        "apps.yml",
+        ".env"
       ]
     }
   },
