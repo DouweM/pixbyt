@@ -41,6 +41,12 @@ Pixbyt lets you realize your wildest Tidbyt dreams by making it easy to:
 <table>
   <tr>
     <td valign="top" align="center">
+      <a href="https://github.com/DouweM/tidbyt-crossword">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-crossword/main/screenshot.webp" width="160"><br>
+        crossword
+      </a>
+    </td>
+    <td valign="top" align="center">
       <a href="https://github.com/DouweM/tidbyt-jeopardy">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-jeopardy/main/screenshot.webp" width="160"><br>
         jeopardy
@@ -53,15 +59,35 @@ Pixbyt lets you realize your wildest Tidbyt dreams by making it easy to:
       </a>
     </td>
     <td valign="top" align="center">
+      <a href="https://github.com/DouweM/tidbyt-owen-wilson-facts">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-owen-wilson-facts/main/screenshot.webp" width="160"><br>
+        owen-wilson-facts
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="center">
+      <a href="https://github.com/DouweM/tidbyt-plex">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-plex/main/screenshot.webp" width="160"><br>
+        plex
+      </a>
+    </td>
+    <td valign="top" align="center">
+      <a href="https://github.com/DouweM/tidbyt-apple-tv">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-apple-tv/main/screenshot.webp" width="160"><br>
+        apple-tv
+      </a>
+    </td>
+    <td valign="top" align="center">
       <a href="https://github.com/DouweM/tidbyt-parcelapp">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-parcelapp/main/screenshot.webp" width="160"><br>
         parcelapp
       </a>
     </td>
     <td valign="top" align="center">
-      <a href="https://github.com/DouweM/tidbyt-ffmpeg">
-        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-ffmpeg/main/screenshot.webp" width="160"><br>
-        ffmpeg
+      <a href="https://github.com/DouweM/tidbyt-homebridge-unifi">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-homebridge-unifi/main/screenshot.webp" width="160"><br>
+        homebridge-unifi
       </a>
     </td>
   </tr>
@@ -73,9 +99,9 @@ Pixbyt lets you realize your wildest Tidbyt dreams by making it easy to:
       </a>
     </td>
     <td valign="top" align="center">
-      <a href="https://github.com/DouweM/tidbyt-owen-wilson-facts">
-        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-owen-wilson-facts/main/screenshot.webp" width="160"><br>
-        owen-wilson-facts
+      <a href="https://github.com/DouweM/tidbyt-ffmpeg">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-ffmpeg/main/screenshot.webp" width="160"><br>
+        ffmpeg
       </a>
     </td>
     <td valign="top" align="center">
@@ -197,18 +223,16 @@ Skip ahead to step 4 to build and launch the app server.
 1. Add the app's repo as a submodule under `apps`, and enter the new directory:
 
     ```bash
-    cd apps
-    git submodule add https://github.com/<username>/<repository>.git <app>
+    git submodule add https://github.com/<username>/<repository>.git apps/<app>
     ```
 
-    For example, to install [`common-misconceptions`](https://github.com/DouweM/tidbyt-common-misconceptions):
+    For example, to install [`crossword`](https://github.com/DouweM/tidbyt-crossword):
 
     ```bash
-    cd apps
-    git submodule https://github.com/DouweM/tidbyt-common-misconceptions.git common-misconceptions
+    git submodule add https://github.com/DouweM/tidbyt-crossword.git apps/crossword
     ```
 
-    Note that in this case, the repo is called `tidbyt-common-misconceptions`, but the app directory needs to be called `common-misconceptions`.
+    Note that in this case, the repo is called `tidbyt-crossword`, but the app directory needs to be called `crossword`.
 
 2. Skip ahead to step 3.2 to configure the app.
 
@@ -455,19 +479,18 @@ The exact path is also printed in the command output.
 #### Regular size (64x32)
 
 ```bash
-# Using local app definition:
 meltano run <app>--webp
 
-# Using app definition in Docker image:
+# Using Docker image:
 docker compose run pixbyt run <app>--webp
 ```
 
 For example:
 
 ```bash
-# Using local app definition:
 meltano run hello-world--webp
-# Using app definition in Docker image:
+
+# Using Docker image:
 docker compose run pixbyt run hello-world--webp
 ```
 
