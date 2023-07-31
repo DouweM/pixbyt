@@ -20,94 +20,94 @@ that you can access through Tidbyt's mobile app.
 
 <table>
   <tr>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-crossword">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-crossword/main/screenshot.webp" width="160"><br>
-        <strong>crossword</strong>
+        crossword
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-jeopardy">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-jeopardy/main/screenshot.webp" width="160"><br>
-        <strong>jeopardy</strong>
+        jeopardy
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-common-misconceptions">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-common-misconceptions/main/screenshot.webp" width="160"><br>
-        <strong>common-misconceptions</strong>
+        common-misconceptions
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-owen-wilson-facts">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-owen-wilson-facts/main/screenshot.webp" width="160"><br>
-        <strong>owen-wilson-facts</strong>
+        owen-wilson-facts
       </a>
     </td>
   </tr>
   <tr>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-plex">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-plex/main/screenshot.webp" width="160"><br>
-        <strong>plex</strong>
+        plex
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-apple-tv">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-apple-tv/main/screenshot.webp" width="160"><br>
-        <strong>apple-tv</strong>
+        apple-tv
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/rspeicher/tidbyt-letterboxd">
         <img src="https://raw.githubusercontent.com/rspeicher/tidbyt-letterboxd/main/screenshot.webp" width="160"><br>
-        <strong>letterboxd</strong>
+        letterboxd
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-parcelapp">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-parcelapp/main/screenshot.webp" width="160"><br>
-        <strong>parcelapp</strong>
+        parcelapp
       </a>
     </td>
   </tr>
   <tr>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-homebridge-unifi">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-homebridge-unifi/main/screenshot.webp" width="160"><br>
-        <strong>homebridge-unifi</strong>
+        homebridge-unifi
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-guess-the-flag">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-guess-the-flag/main/screenshot.webp" width="160"><br>
-        <strong>guess-the-flag</strong>
+        guess-the-flag
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-ffmpeg">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-ffmpeg/main/screenshot.webp" width="160"><br>
-        <strong>ffmpeg</strong>
+        ffmpeg
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-revolution">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-revolution/main/screenshot.webp" width="160"><br>
-        <strong>revolution</strong>
+        revolution
       </a>
     </td>
   </tr>
   <tr>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-speedtest">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-speedtest/main/screenshot.webp" width="160"><br>
-        <strong>speedtest</strong>
+        speedtest
       </a>
     </td>
-    <td valign="top" align="center">
+    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/pixbyt/tree/apps/hello-world">
         <img src="https://raw.githubusercontent.com/DouweM/pixbyt/main/apps/hello-world/screenshot.webp" width="160"><br>
-        <strong>hello-world</strong>
+        hello-world
       </a>
     </td>
     <td valign="center" align="center" colspan="2">
