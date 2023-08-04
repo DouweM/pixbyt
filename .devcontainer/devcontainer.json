@@ -2,7 +2,10 @@
   "name": "Pixbyt",
 
   "initializeCommand": "git submodule update --init",
-  "postCreateCommand": "ln -s /project/.meltano . && cp .env.sample .env",
+  "postCreateCommand": {
+    ".meltano": "ln -s /project/.meltano .",
+    ".env": "cp .env.sample .env"
+  },
 
   "build": {
     "context": "..",
@@ -20,6 +23,13 @@
         "apps.yml",
         ".env"
       ]
+    },
+    "vscode": {
+      "settings": {
+        "workbench.editorAssociations": {
+          "*.md": "vscode.markdown.preview.editor"
+        }
+      }
     }
   },
 
