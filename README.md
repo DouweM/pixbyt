@@ -129,7 +129,7 @@ Apps running on Pixbyt have none of these limitations:
 - [x] Reach **local network resources**, not just the public internet
 - [x] Work with **complex APIs**, not just simple REST HTTP requests
 - [x] Read **local files**, like images or JSON
-- [x] Organize your source code across **multiple files**
+- [x] Organize your source code across **multiple modules**
 
 Pixbyt lets you realize your wildest Tidbyt dreams by making it easy to:
 - **build** advanced Tidbyt apps,
@@ -142,16 +142,16 @@ Pixbyt lets you realize your wildest Tidbyt dreams by making it easy to:
 
 Pixbyt's advanced features are enabled by [`tap-pixlet`](https://github.com/DouweM/tap-pixlet), an unofficial Tidbyt app runner that extends [Pixlet](https://github.com/tidbyt/pixlet) (the official Tidbyt app development framework) with an unofficial standard library named [Pixlib](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib), similar to how [Starlib](https://github.com/qri-io/starlib) is the unofficial standard library for [Starlark](https://github.com/google/starlark-go) (the Python-like language Tidbyt apps are written in).
 Pixlib comes with functions like
-[`file.read`](https://github.com/DouweM/tap-pixlet/blob/main/tap_pixlet/pixlib/file.star),
-[`file.exec`](https://github.com/DouweM/tap-pixlet/blob/main/tap_pixlet/pixlib/file.star),
-[`font.height`](https://github.com/DouweM/tap-pixlet/blob/main/tap_pixlet/pixlib/font.star),
-[`html.unescape`](https://github.com/DouweM/tap-pixlet/blob/main/tap_pixlet/pixlib/html.star), and
-[`html.xpath`](https://github.com/DouweM/tap-pixlet/blob/main/tap_pixlet/pixlib/html.star),
+[`file.read`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibfile),
+[`file.exec`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibfile),
+[`font.height`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibfont),
+[`html.unescape`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibhtml), and
+[`html.xpath`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibhtml),
 helpful constants like
-[`const.WIDTH`](https://github.com/DouweM/tap-pixlet/blob/main/tap_pixlet/pixlib/const.star),
-[`const.HEIGHT`](https://github.com/DouweM/tap-pixlet/blob/main/tap_pixlet/pixlib/const.star), and
-[`const.FPS`](https://github.com/DouweM/tap-pixlet/blob/main/tap_pixlet/pixlib/const.star), and
-overloads `load` to support local files.
+[`const.WIDTH`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibconst),
+[`const.HEIGHT`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibconst), and
+[`const.FPS`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibconst), and
+overloads [`load`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#load) to support local modules.
 
 Pixbyt uses
 `tap-pixlet` to run apps,
@@ -180,7 +180,7 @@ Codespaces will automatically install the necessary dependencies and launch you 
     TAP_PIXLET_MAGNIFICATION=8 meltano run hello-world--webp
     ```
 
-    The image will be created at `output/<app>/<timestamp>.webp`.
+    The image will be created at `output/hello-world/<timestamp>.webp`.
     The exact path is also printed in the command output.
 1. Render app to your Tidbyt:
    1. Update `.env` with your configuration:
@@ -280,7 +280,7 @@ Skip ahead to step 4 to build and launch the app server.
 
 </summary>
 
-1. Add the app's repo as a submodule under `apps`, and enter the new directory:
+1. Add the app's repo as a submodule under `apps`:
 
     ```bash
     git submodule add https://github.com/<username>/<repository>.git apps/<app>
