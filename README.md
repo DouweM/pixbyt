@@ -318,9 +318,9 @@ Skip ahead to step 4 to build and launch the app server.
     Note that the app directory and file names need to match.
 
     Optionally, your app directory can also contain:
-    - `*.py` scripts to run using `file.exec`
-    - `*.star` files to load using `load`
-    - arbitrary files to read using `file.read`
+    - `*.py` scripts to run using [`file.exec`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibfile)
+    - `*.star` files to load using [`load`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#load)
+    - arbitrary files to read using [`file.read`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pixlib#pixlibfile)
     - Python packages in `requirements.txt` (one `pip install` argument per line)
     - APT packages in `apt-packages.txt`(one `apt-get install` argument per line)
 
