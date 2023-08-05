@@ -105,7 +105,7 @@ that you can access through Tidbyt's mobile app.
       </a>
     </td>
     <td valign="top" align="center" width="25%">
-      <a href="https://github.com/DouweM/pixbyt/tree/apps/hello-world">
+      <a href="https://github.com/DouweM/pixbyt/tree/main/apps/hello-world">
         <img src="https://raw.githubusercontent.com/DouweM/pixbyt/main/apps/hello-world/screenshot.webp" width="174"><br>
         hello-world
       </a>
