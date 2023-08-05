@@ -99,12 +99,6 @@ that you can access through Tidbyt's mobile app.
   </tr>
   <tr>
     <td valign="top" align="center" width="25%">
-      <a href="https://github.com/DouweM/tidbyt-speedtest">
-        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-speedtest/main/screenshot.webp" width="174"><br>
-        speedtest
-      </a>
-    </td>
-    <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/pixbyt/tree/main/apps/hello-world">
         <img src="https://raw.githubusercontent.com/DouweM/pixbyt/main/apps/hello-world/screenshot.webp" width="174"><br>
         hello-world
@@ -113,6 +107,12 @@ that you can access through Tidbyt's mobile app.
     <td valign="center" align="center" colspan="2">
       <a href="#option-c-create-a-brand-new-app">
         <strong>Your next Tidbyt app</strong>
+      </a>
+    </td>
+    <td valign="top" align="center" width="25%">
+      <a href="https://github.com/DouweM/tidbyt-speedtest">
+        <img src="https://raw.githubusercontent.com/DouweM/tidbyt-speedtest/main/screenshot.webp" width="174"><br>
+        speedtest
       </a>
     </td>
   </tr>
