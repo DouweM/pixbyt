@@ -2,7 +2,7 @@ plugins:
   extractors:
   - name: tap-pixlet
     namespace: tap_pixlet
-    pip_url: git+https://github.com/DouweM/tap-pixlet.git
+    pip_url: git+https://github.com/DouweM/tap-pixlet.git@input # TODO: Drop @input
     settings:
     - name: path
     - name: installation_id
@@ -30,6 +30,28 @@ plugins:
     pip_url: git+https://github.com/DouweM/target-webp.git
 
   utilities:
+  - name: server
+    namespace: pixbyt_server
+    pip_url: git+https://github.com/DouweM/pixbyt-server.git
+    executable: pixbyt-server
+    settings:
+    - name: port
+      kind: integer
+      value: 1234
+      env: SERVER_PORT
+    - name: auth
+      kind: object
+    - name: auth.username
+      kind: string
+      env: SERVER_USERNAME
+    - name: auth.password
+      kind: password
+      env: SERVER_PASSWORD
+    - name: run_scheduler
+      kind: boolean
+      value: true
+      env: SERVER_RUN_SCHEDULER
+
   - name: airflow
     variant: apache
     pip_url: git+https://github.com/meltano/airflow-ext.git@main apache-airflow==2.3.4 psycopg2-binary

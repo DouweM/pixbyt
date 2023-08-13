@@ -14,7 +14,7 @@ RUN apt-get update
 RUN apt-get install -y curl
 # TODO: Make this work
 # RUN export PIXLET_VERSION=$(curl https://raw.githubusercontent.com/tidbyt/community/main/PIXLET_VERSION | sed 's/v//')
-ARG PIXLET_VERSION=0.27.2
+ARG PIXLET_VERSION=0.28.0
 RUN echo $PIXLET_VERSION
 RUN curl -L -o pixlet.tar.gz https://github.com/tidbyt/pixlet/releases/download/v${PIXLET_VERSION}/pixlet_${PIXLET_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz
 RUN tar -xvf pixlet.tar.gz
@@ -26,11 +26,11 @@ COPY ./meltano.yml .
 COPY ./plugins/utilities/ ./plugins/utilities/
 COPY ./plugins/plugins.meltano.yml ./plugins/plugins.meltano.yml
 
-# Prod: Install loaders and Airflow
+# Prod: Install loaders, server, and Airflow
 FROM base as prod-preinstall
 RUN meltano --log-level=debug install
 
-# Dev: Only install loaders, not Airflow
+# Dev: Only install loaders, not server and Airflow
 FROM base as dev-preinstall
 RUN meltano --log-level=debug install loaders
 
@@ -53,4 +53,4 @@ COPY . .
 ENV MELTANO_PROJECT_READONLY 1
 
 ENTRYPOINT ["meltano"]
-CMD ["invoke", "airflow", "scheduler"]
+CMD ["invoke", "server"]
