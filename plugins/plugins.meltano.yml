@@ -32,7 +32,7 @@ plugins:
   utilities:
   - name: server
     namespace: pixbyt_server
-    pip_url: git+https://github.com/DouweM/pixbyt-server.git
+    pip_url: git+https://github.com/DouweM/pixbyt-server.git@0a581ff62e6d5622d13aaabfbe4a26d0340d8370 # TODO: Drop SHA
     executable: pixbyt-server
     settings:
     - name: port
