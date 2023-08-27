@@ -1,4 +1,4 @@
-ARG MELTANO_IMAGE=meltano/meltano:latest
+ARG MELTANO_IMAGE=meltano/meltano:latest-python3.11
 ARG APP_ENV=prod
 
 FROM $MELTANO_IMAGE as base
@@ -14,7 +14,7 @@ RUN apt-get update
 RUN apt-get install -y curl
 # TODO: Make this work
 # RUN export PIXLET_VERSION=$(curl https://raw.githubusercontent.com/tidbyt/community/main/PIXLET_VERSION | sed 's/v//')
-ARG PIXLET_VERSION=0.28.0
+ARG PIXLET_VERSION=0.28.3
 RUN echo $PIXLET_VERSION
 RUN curl -L -o pixlet.tar.gz https://github.com/tidbyt/pixlet/releases/download/v${PIXLET_VERSION}/pixlet_${PIXLET_VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz
 RUN tar -xvf pixlet.tar.gz
