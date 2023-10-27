@@ -155,7 +155,7 @@ overloads [`load`](https://github.com/DouweM/tap-pixlet/tree/main/tap_pixlet/pix
 
 Pixbyt uses
 `tap-pixlet` to run apps,
-[`target-tidbyt`](https://github.com/DouweM/target-tidbyt) and [`target-webp`](https://github.com/DouweM/target-tidbyt) to push the resulting images to your Tidbyt or WebP image files,
+[`target-tidbyt`](https://github.com/DouweM/target-tidbyt) and [`target-webp`](https://github.com/DouweM/target-webp) to push the resulting images to your Tidbyt or WebP image files,
 [Airflow](https://airflow.apache.org/) to run apps on a schedule, and
 [Meltano](https://github.com/meltano/meltano) to tie these components together.
 Pixbyt also includes resources to [package your apps into a Docker image](./Dockerfile) (locally or [automatically on GitHub Actions](./.github/workflows/main.yml)) and [launch it using Docker Compose](./docker-compose.yml).
