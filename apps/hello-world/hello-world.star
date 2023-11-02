@@ -1,9 +1,10 @@
 load("render.star", "render")
 load("pixlib/const.star", "const")
+load("pixlib/input.star", "input")
 load("./client.star", "client")
 
 def main(config):
-    NAME = config.get("name") or "world"
+    NAME = input.json().get("name") or config.get("name") or "world"
 
     image = client.get_image()
     text = client.get_response(NAME)
