@@ -1,0 +1,15 @@
+jobs:
+- name: zoom
+  tasks:
+  - tap-pixlet--zoom target-tidbyt
+- name: zoom--webp
+  tasks:
+  - tap-pixlet--zoom target-webp
+
+plugins:
+  extractors:
+  - name: tap-pixlet--zoom
+    inherit_from: tap-pixlet
+    pip_url: -e ../tap-pixlet # TODO
+    config:
+      path: apps/zoom

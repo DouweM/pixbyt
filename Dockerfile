@@ -26,11 +26,11 @@ COPY ./meltano.yml .
 COPY ./plugins/utilities/ ./plugins/utilities/
 COPY ./plugins/plugins.meltano.yml ./plugins/plugins.meltano.yml
 
-# Prod: Install loaders and Airflow
+# Prod: Install loaders, server, and Airflow
 FROM base as prod-preinstall
 RUN meltano --log-level=debug install
 
-# Dev: Only install loaders, not Airflow
+# Dev: Only install loaders, not server and Airflow
 FROM base as dev-preinstall
 RUN meltano --log-level=debug install loaders
 
@@ -53,4 +53,4 @@ COPY . .
 ENV MELTANO_PROJECT_READONLY 1
 
 ENTRYPOINT ["meltano"]
-CMD ["invoke", "airflow", "scheduler"]
+CMD ["invoke", "server"]
