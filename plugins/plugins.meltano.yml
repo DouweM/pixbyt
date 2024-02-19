@@ -33,8 +33,8 @@ plugins:
   utilities:
   - name: airflow
     variant: apache
-    pip_url: git+https://github.com/meltano/airflow-ext.git@main apache-airflow==2.7.0 psycopg2-binary
-      --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.7.0/constraints-3.11.txt
+    pip_url: git+https://github.com/meltano/airflow-ext.git@main apache-airflow==2.8.1 psycopg2-binary
+      --constraint https://raw.githubusercontent.com/apache/airflow/constraints-2.8.1/constraints-no-providers-${MELTANO__PYTHON_VERSION}.txt
     config:
       core:
         dags_folder: $MELTANO_PROJECT_ROOT/plugins/airflow/dags
