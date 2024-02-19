@@ -104,15 +104,21 @@ that you can access through Tidbyt's mobile app.
         hello-world
       </a>
     </td>
-    <td valign="center" align="center" colspan="2">
-      <a href="#option-c-create-a-brand-new-app">
-        <strong>Your next Tidbyt app</strong>
+    <td valign="top" align="center" width="25%">
+      <a href="https://github.com/rspeicher/tidbyt-dadjoke">
+        <img src="https://raw.githubusercontent.com/rspeicher/tidbyt-dadjoke/main/screenshot.webp" width="174"><br>
+        dadjoke
       </a>
     </td>
     <td valign="top" align="center" width="25%">
       <a href="https://github.com/DouweM/tidbyt-speedtest">
         <img src="https://raw.githubusercontent.com/DouweM/tidbyt-speedtest/main/screenshot.webp" width="174"><br>
         speedtest
+      </a>
+    </td>
+    <td valign="center" align="center" width="25%">
+      <a href="#option-c-create-a-brand-new-app">
+        <strong>Your next Tidbyt app</strong>
       </a>
     </td>
   </tr>
