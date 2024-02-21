@@ -8,4 +8,3 @@ environments:
 include_paths:
 - "./plugins/*.meltano.yml"
 - "./apps/**/pixbyt.yml"
-- "./apps.yml"
