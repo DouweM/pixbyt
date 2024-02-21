@@ -10,7 +10,7 @@ plugins:
   extractors:
   - name: tap-pixlet--hello-world
     inherit_from: tap-pixlet
-    pip_url: git+https://github.com/DouweM/tap-pixlet.git -r apps/hello-world/requirements.txt
+    pip_url: git+https://github.com/DouweM/tap-pixlet.git@input -r apps/hello-world/requirements.txt # TODO: Drop @input
     config:
       path: apps/hello-world
       app_config:
