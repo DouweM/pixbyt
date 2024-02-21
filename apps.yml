@@ -1,6 +1,6 @@
 schedules:
 - name: hello-world
-  interval: '0 * * * *' # On the hour
+  interval: '0 * * * *' # Every hour
   job: hello-world
 
 # - name: <app>
