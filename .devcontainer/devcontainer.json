@@ -1,12 +1,12 @@
 {
   "name": "Pixbyt",
-
   "initializeCommand": "git submodule update --init",
   "postCreateCommand": {
     ".meltano": "ln -s /project/.meltano .",
-    ".env": "cp .env.sample .env"
+    ".env": "cp .env.sample .env",
+    "apps.yml": "cp apps.yml.sample apps.yml",
+    "devices.yml": "cp devices.yml.sample devices.yml"
   },
-
   "build": {
     "context": "..",
     "dockerfile": "../Dockerfile",
@@ -15,7 +15,6 @@
     },
     "cacheFrom": "type=gha"
   },
-
   "customizations": {
     "codespaces": {
       "openFiles": [
@@ -32,13 +31,12 @@
       }
     }
   },
-
   "secrets": {
     "TIDBYT_DEVICE_ID": {
       "description": "Optional. Find your Device ID in the Tidbyt mobile app under Settings > General > Get API Key."
     },
-    "TIDBYT_TOKEN": {
-      "description": "Optional. Find your API Token in the Tidbyt mobile app under Settings > General > Get API Key."
+    "TIDBYT_KEY": {
+      "description": "Optional. Find your Key in the Tidbyt mobile app under Settings > General > Get API Key."
     }
   }
 }

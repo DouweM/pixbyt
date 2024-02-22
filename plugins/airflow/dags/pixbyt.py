@@ -24,7 +24,7 @@ DEFAULT_DAG_OPTS = {
         "start_date": datetime(1970, 1, 1, 0, 0, 0),
     }
 }
-DEFAULT_INTERVAL = "*/15 * * * *"
+DEFAULT_SCHEDULE = "*/15 * * * *"
 
 PROJECT_ROOT = os.getenv("MELTANO_PROJECT_ROOT", os.getcwd())
 MELTANO_EXECUTABLE = ".meltano/run/bin"
@@ -33,24 +33,38 @@ APPS_FILENAME = "apps.yml"
 apps_path = Path(PROJECT_ROOT).joinpath(APPS_FILENAME)
 apps_config = yaml.safe_load(apps_path.read_text())
 
-schedules = apps_config.get("schedules", [])
+if isinstance(apps_config, list):
+    apps_config = {"apps": apps_config} # `apps:` is optional
+apps = [
+    *apps_config.get("apps", []),
+    *apps_config.get("schedules", []) # Backwards compatibility with meltano.yml format
+]
 
-for schedule in schedules:
-    name = schedule.get("name")
+for app in apps:
+    name = app.get("name")
 
     if not name:
         logger.warning("Skipping app without a name")
         continue
 
-    interval = schedule.get("interval", DEFAULT_INTERVAL)
-    job = schedule.get("job", name)
+    schedule = (
+        app.get("schedule")
+        or app.get("interval") # Backwards compatibility with meltano.yml format
+        or DEFAULT_SCHEDULE
+    )
+    job = app.get("job", name)
 
-    env = schedule.get("env", {})
-    env = {k: str(v) for k, v in env.items()}
+    env = app.get("env", {}) # Backwards compatibility with meltano.yml format
+
+    devices = app.get("devices", [])
+    if devices:
+        env["TIDBYT_DEVICE_NAMES"] = str(devices)
 
     dag_id = name.replace("/", "--")
-    with DAG(dag_id, schedule=interval, **DEFAULT_DAG_OPTS) as dag:
+
+    with DAG(dag_id, schedule=schedule, **DEFAULT_DAG_OPTS) as dag:
         cmd = f"{MELTANO_EXECUTABLE} run {job}"
+        env = {k: str(v) for k, v in env.items()}
 
         task = BashOperator(
             dag=dag,
@@ -62,4 +76,4 @@ for schedule in schedules:
         )
     globals()[dag_id] = dag
 
-    logger.info(f"Created DAG '{dag_id}': interval='{interval}', cmd='{cmd}', env={env}")
+    logger.info(f"Created DAG '{dag_id}': schedule='{schedule}', cmd='{cmd}', env={env}")

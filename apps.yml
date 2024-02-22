@@ -1,8 +1,0 @@
-schedules:
-- name: hello-world
-  interval: '0 * * * *' # Every hour
-  job: hello-world
-
-# - name: <app>
-#   interval: '*/15 * * * *' # Every 15 minutes
-#   job: <app>

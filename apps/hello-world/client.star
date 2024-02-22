@@ -4,4 +4,9 @@ def client.get_image():
     return file.read("logo.png")
 
 def client.get_response(name):
-    return file.exec("hello.py", {"name": name})["response"]
+    input = {"name": name}
+    output = file.exec("hello.py", input)
+
+    print("%s ---hello.py--> %s" % (input, output))
+
+    return output["response"]

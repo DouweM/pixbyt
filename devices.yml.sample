@@ -1,0 +1,8 @@
+devices:
+- name: default
+  id: $TIDBYT_DEVICE_ID
+  key: $TIDBYT_KEY
+
+# - name: <room name or other identifier>
+#   id: $TIDBYT_<NAME>_DEVICE_ID
+#   key: $TIDBYT_<NAME>_KEY

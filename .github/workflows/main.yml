@@ -40,8 +40,11 @@ jobs:
         with:
           version: '2.20.2'
 
-      - name: Test / Create .env from sample
-        run: cp .env.sample .env
+      - name: Test / Create .env, apps.yml, and devices.yml from sample
+        run: |
+          cp .env.sample .env
+          cp apps.yml.sample apps.yml
+          cp devices.yml.sample devices.yml
 
       - name: Test / Render hello-world to image
         run: |
