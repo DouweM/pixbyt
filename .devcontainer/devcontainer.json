@@ -4,8 +4,8 @@
   "postCreateCommand": {
     ".meltano": "ln -s /project/.meltano .",
     ".env": "cp .env.sample .env",
-    "apps.yml": "cp apps.yml.sample apps.yml",
-    "devices.yml": "cp devices.yml.sample devices.yml"
+    "apps.yml": "cp -n apps.yml.sample apps.yml",
+    "devices.yml": "cp -n devices.yml.sample devices.yml"
   },
   "build": {
     "context": "..",

@@ -43,8 +43,8 @@ jobs:
       - name: Test / Create .env, apps.yml, and devices.yml from sample
         run: |
           cp .env.sample .env
-          cp apps.yml.sample apps.yml
-          cp devices.yml.sample devices.yml
+          cp -n apps.yml.sample apps.yml
+          cp -n devices.yml.sample devices.yml
 
       - name: Test / Render hello-world to image
         run: |
