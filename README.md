@@ -140,7 +140,7 @@ Apps running on Pixbyt have none of these limitations:
 Pixbyt lets you realize your wildest Tidbyt dreams by making it easy to:
 - **build** advanced Tidbyt apps,
 - **install** advanced apps built by the community,
-- **manage** app configurations and schedules,
+- **manage** multiple Tidbyts and apps,
 - **package** apps together in a [Docker](https://www.docker.com/) image, and
 - **launch** the app server using [Docker Compose](https://docs.docker.com/compose/).
 
@@ -178,8 +178,7 @@ Codespaces will automatically install the necessary dependencies and launch you 
 
 1. Click the green "Use this template" button at the top of this page
 1. Choose "Open in a codespace" and wait for the codespace to start
-1. Update `.env` with your configuration:
-     - `HELLO_WORLD_NAME`: Optionally, replace `world` with your own name.
+1. Optionally, update the `HELLO_WORLD_NAME` environment variable in `.env` to replace `world` with your own name.
 1. Render app to a WebP image file:
 
     ```bash
@@ -189,9 +188,8 @@ Codespaces will automatically install the necessary dependencies and launch you 
     The image will be created at `output/hello-world/<timestamp>.webp`.
     The exact path is also printed in the command output.
 1. Render app to your Tidbyt:
-   1. Update `.env` with your configuration:
-       - `TIDBYT_DEVICE_ID`: Find your Device ID in the Tidbyt mobile app under Settings > General > Get API Key.
-       - `TIDBYT_TOKEN`: Find your API Token in the Tidbyt mobile app under Settings > General > Get API Key.
+   1. Find your Device ID and Key in the Tidbyt mobile app under Settings > General > Get API Key.
+   1. Update the `TIDBYT_DEVICE_ID` and `TIDBYT_KEY` environment variables in `.env`.
    1. Render the `hello-world` app and send it to your Tidbyt (in the foreground):
 
        ```bash
@@ -224,8 +222,7 @@ If you haven't launched a codespace yet:
 
 1. Click the green "Use this template" button at the top of this page
 1. Choose "Create a new repository"
-2. Create a new (private) repo
-
+1. Create a new (private) repo
 1. Clone your new repository and enter the new directory:
 
     ```bash
@@ -235,27 +232,72 @@ If you haven't launched a codespace yet:
 
 </details>
 
-### 2. Configure your Tidbyt
+### 2. Configure Pixbyt
 
-1. If no `.env` configuration file exists yet, create one from the sample:
-
+1. If the `.env` configuration file doesn't exist yet, create it from the sample:
    ```bash
    cp .env.sample .env
    ```
+1. Update the `TZ` environment variable in `.env` to your ["TZ" timezone identifier](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). This is used by many apps that show the (relative) date and time.
 
-1. Update `.env` with your configuration:
-    - `TZ`: Find your ["TZ" timezone identifier](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). This is used by many apps that show the (relative) date and time.
-    - `TIDBYT_DEVICE_ID`: Find your Device ID in the Tidbyt mobile app under Settings > General > Get API Key.
-    - `TIDBYT_TOKEN`: Find your API Token in the Tidbyt mobile app under Settings > General > Get API Key.
+#### Option A: Configure just one Tidbyt
+
+1. Find your Device ID and Key in the Tidbyt mobile app under Settings > General > Get API Key.
+1. Update the `TIDBYT_DEVICE_ID` and `TIDBYT_KEY` environment variables in `.env`.
+
+<details>
+<summary>
+
+#### Option B: Configure multiple Tidbyts
+
+</summary>
+
+1. If `devices.yml` doesn't exists yet, create it from the sample:
+   ```bash
+   cp devices.yml.sample devices.yml
+   ```
+1. For each device:
+   1. Add the device to `devices.yml` under `devices:`:
+       ```yaml
+       devices:
+       # ...
+       - name: <name>
+         id: $TIDBYT_<NAME>_DEVICE_ID
+         key: $TIDBYT_<NAME>_KEY
+       ```
+
+       1. Replace `<name>` with the room name or another identifier.
+       1. Replace `<NAME>` with the uppercased version thereof.
+
+       For example:
+
+       ```yaml
+       devices:
+       # ...
+       - name: office
+         id: $TIDBYT_OFFICE_DEVICE_ID
+         key: $TIDBYT_OFFICE_KEY
+       ```
+   1. Find your Device ID and Key in the Tidbyt mobile app under Settings > General > Get API Key.
+   1. Add the `TIDBYT_<NAME>_DEVICE_ID` and `TIDBYT_<NAME>_KEY` environment variables in `.env`.
+       For example:
+
+       ```bash
+       TIDBYT_OFFICE_DEVICE_ID="foo-bar-baz-qux-abc"
+       TIDBYT_OFFICE_KEY="<key>"
+       ```
+
+</details>
 
 ### 3. Add your apps
 
-The most important files in your Pixbyt repo (and likely the only ones you'll want to edit) are the following, which define the apps, their configuration, and their schedules:
+The most important files in your Pixbyt repo (and likely the only ones you'll want to edit) are the following, which define the apps, their configuration, and their apps:
 
 ```bash
 pixbyt
-├─ apps.yml                 # Schedules
 ├─ .env                     # Configuration
+├─ apps.yml                 # App schedules
+├─ devices.yml              # Optional: Devices
 └─ apps
    └─ <app>                 # One directory for each app
       ├─ <app>.star         # Main Pixlet applet
@@ -364,36 +406,41 @@ Skip ahead to step 4 to build and launch the app server.
 
 #### 3.2. Configure the app
 
-1. Add the app's update schedule to `apps.yml` under `schedules:`:
+1. Add the app and its update schedule to `apps.yml` under `apps:`:
 
     ```yaml
-    schedules:
+    apps:
     # ...
     - name: <app>
-      interval: '<cron schedule expression>'
-      job: <app>
+      schedule: '<cron expression>'
+      # If you have multiple Tidbyts defined in `devices.yml`, you can optionally filter them by name:
+      # devices: [<device>]
     ```
 
     1. Replace `<app>` with the name of the app.
-    1. Replace `<cron schedule expression>` with an appropriate [cron schedule expression](https://crontab.guru/):
+    1. Replace `<cron expression>` with an appropriate [cron expression](https://crontab.guru/):
 
          - Clocks should use `* * * * *` to update every minute, so that the displayed time is always as fresh as possible.
          - Apps that display a random entry from a list can use `*/5 * * * *` to update every 5 minutes, so that a fresh entry is shown on every app rotation.
          - Apps that show the latest data from some API can use `*/15 * * * *` to update every 15 minutes, or something else appropriate for your data source and the expected data freshness.
          - Apps that will always generate the same image can use `0 0 * * *` to update every day at midnight, just to be sure.
 
-         (A recommended schedule is typically documented in the app's `README`.)
+         A recommended schedule is typically documented in the app's `README`.
+    1. Optionally, replace `<device>` with the name of a device defined in `devices.yml` to only send the app to that device. By default, the app will be sent to all devices.
 
     For example:
 
     ```yaml
-    schedules:
+    apps:
+    # ...
     - name: hello-world
-      interval: '0 * * * *' # On the hour
-      job: hello-world
+      schedule: '0/15 * * * *' # Every 15 minutes
+      devices: [office] # Optional
     ```
 
-1. If the app requires configuration, update `.env`:
+    Note that examples in apps' `README`s sometimes use `schedules` and `interval` keys instead of `apps` and `schedules`. They are equivalent and both are supported, but the latter is preferred.
+
+1. If the app requires configuration, add its environment variables to `.env`:
 
     For any config key the app defines under `app_config:` in its `pixbyt.yml` file, add a value for the uppercase environment variable:
 
@@ -401,7 +448,7 @@ Skip ahead to step 4 to build and launch the app server.
     <APP>_<KEY>="<value>"
     ```
 
-    (The exact keys are typically documented in the app's `README`.)
+    The exact environment variables are typically documented in the app's `README`.
 
     For example:
 
@@ -484,7 +531,7 @@ Note that you'll need to do this each time your apps or their schedules change a
     ```
 
 Your Pixbyt app server is now running, and your apps will update on schedule!
-You can find logs for your apps under `logs/<app>/`.
+You can find logs for your apps under `logs/apps/<app>/`.
 
 ## How to develop apps with Pixbyt
 

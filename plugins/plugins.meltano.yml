@@ -19,12 +19,17 @@ plugins:
     namespace: target_tidbyt
     pip_url: git+https://github.com/DouweM/target-tidbyt.git
     settings:
-    - name: token
-      kind: password
     - name: device_id
-    config:
-      device_id: $TIDBYT_DEVICE_ID
-      token: $TIDBYT_TOKEN
+      value: $TIDBYT_DEVICE_ID
+    - name: key
+      kind: password
+      value: $TIDBYT_KEY
+
+    - name: devices_path
+      value: $MELTANO_PROJECT_ROOT/devices.yml
+    - name: device_names
+      kind: array
+      value: $TIDBYT_DEVICE_NAMES
 
   - name: target-webp
     namespace: target_webp
